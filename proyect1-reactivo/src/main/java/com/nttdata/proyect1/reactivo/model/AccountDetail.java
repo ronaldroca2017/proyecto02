@@ -18,4 +18,5 @@ public class AccountDetail {
     private String quantity;
 
 
+
 }
