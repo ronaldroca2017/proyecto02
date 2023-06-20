@@ -14,13 +14,16 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 @Document(collection = "products")
-public class product {
+public class Product {
 
     @EqualsAndHashCode.Include
     @Id
-    private String id;
+    private String idProduct;
 
+    @Field
     private String description;
 
+    @Field
+    //private String productType;
     private ProductType productType;
 }

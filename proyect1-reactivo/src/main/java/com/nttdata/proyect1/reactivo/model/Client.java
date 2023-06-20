@@ -17,7 +17,7 @@ public class Client {
 
     @EqualsAndHashCode.Include
     @Id
-    private String id;
+    private String idClient;
 
     @Field
     private String name;
@@ -27,6 +27,9 @@ public class Client {
 
     @Field
     private String dni;
+
+    @Field
+    private String clientType;
 
 
 

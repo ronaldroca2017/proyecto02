@@ -46,13 +46,18 @@
 			<scope>test</scope>
 		</dependency>
 		-->
+		<!--
+                <dependency>
+                    <groupId>io.reactivex.rxjava3</groupId>
+                    <artifactId>rxjava</artifactId>
+                    <version>3.1.5</version>
+                </dependency>
+                -->
 
 		<dependency>
-			<groupId>io.reactivex.rxjava3</groupId>
-			<artifactId>rxjava</artifactId>
-			<version>3.1.5</version>
+		<groupId>io.reactivex.rxjava2</groupId>
+		<artifactId>rxjava</artifactId>
 		</dependency>
-
 
 	</dependencies>
 

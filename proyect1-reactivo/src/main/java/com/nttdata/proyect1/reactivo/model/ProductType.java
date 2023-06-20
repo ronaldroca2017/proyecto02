@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class ProductType {
     @EqualsAndHashCode.Include
     @Id
-    private String id;
+    private String idProductType;
 
     private String description;
 }

@@ -1,8 +1,13 @@
 package com.nttdata.proyect1.reactivo.service;
 
 import com.nttdata.proyect1.reactivo.model.Client;
+/*
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
+*/
+
+import io.reactivex.Single;
+import io.reactivex.Observable;
 
 public interface IClienteService {
 
@@ -13,6 +18,9 @@ public interface IClienteService {
     Observable<Client> findAll();
 
     Single<Client> findById(String id);
+
+
+    Single<Client> findClientByName(String name);
 
 
 }

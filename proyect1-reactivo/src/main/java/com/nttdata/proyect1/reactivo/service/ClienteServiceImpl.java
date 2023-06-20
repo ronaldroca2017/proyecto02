@@ -2,8 +2,13 @@ package com.nttdata.proyect1.reactivo.service;
 
 import com.nttdata.proyect1.reactivo.model.Client;
 import com.nttdata.proyect1.reactivo.repository.IClientRepository;
+
+/*
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
+*/
+import io.reactivex.Single;
+import io.reactivex.Observable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +35,10 @@ public class ClienteServiceImpl implements IClienteService{
     @Override
     public Single<Client> findById(String id) {
         return Single.fromPublisher(clientRepository.findById(id));
+    }
+
+    @Override
+    public Single<Client> findClientByName(String name) {
+        return  Single.fromPublisher(clientRepository.findClientByName(name));
     }
 }

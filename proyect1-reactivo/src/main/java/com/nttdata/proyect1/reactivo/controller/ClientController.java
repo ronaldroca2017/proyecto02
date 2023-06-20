@@ -2,8 +2,12 @@ package com.nttdata.proyect1.reactivo.controller;
 
 import com.nttdata.proyect1.reactivo.model.Client;
 import com.nttdata.proyect1.reactivo.service.IClienteService;
+/*
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
+*/
+import io.reactivex.Single;
+import io.reactivex.Observable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -30,11 +34,22 @@ public class ClientController {
         return clienteService.findAll();
     }
 
-    @GetMapping(path = "/{id}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{id}" , produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Single<Client> getClientById(@PathVariable("id") String id){
+        return clienteService.findById(id).flatMap(e -> Single.just(e));
+    }
+
+    /*
+   @GetMapping(path = "/{id}" , produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Single<Client> getClientById(@PathVariable("id") String id){
         return clienteService.findById(id);
     }
-
-
+*/
+/*
+    @GetMapping(path = "/{name}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public Single<Client> getClientByName(@PathVariable("name") String name){
+        return clienteService.findClientByName(name);
+    }
+*/
 
 }
