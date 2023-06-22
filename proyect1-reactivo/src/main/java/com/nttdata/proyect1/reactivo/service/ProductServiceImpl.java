@@ -48,8 +48,4 @@ public class ProductServiceImpl implements IProductService{
         return Observable.fromPublisher(productTypeRepository.findAll());
     }
 
-    @Override
-    public Single<ProductType> findProductTypeByIdProduct(String idProductType) {
-        return Single.fromPublisher(productTypeRepository.findProductTypeByIdProduct(idProductType));
-    }
 }

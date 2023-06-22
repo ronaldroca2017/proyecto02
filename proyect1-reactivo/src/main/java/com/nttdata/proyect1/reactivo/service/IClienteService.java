@@ -19,8 +19,4 @@ public interface IClienteService {
 
     Single<Client> findById(String id);
 
-
-    Single<Client> findClientByName(String name);
-
-
 }

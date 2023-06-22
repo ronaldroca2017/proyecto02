@@ -1,6 +1,6 @@
 package com.nttdata.proyect1.reactivo.repository;
 
-import com.nttdata.proyect1.reactivo.model.Account;
+import com.nttdata.proyect1.reactivo.dto.AccountMovementDto;
 import com.nttdata.proyect1.reactivo.model.Account;
 
 import org.springframework.data.mongodb.repository.Query;
@@ -15,5 +15,11 @@ public interface IAccountRepository extends ReactiveMongoRepository<Account, Str
 
     @Query("{'idProduct' : ?0}")
     Flux<Account> findAccountByIdProduct(String idProduct);
+
+    @Query("{'idClient' : ?0}")
+    Flux<Account> consultAvailableBalances(String idClient);
+
+    @Query("{'idClient' : ?0, 'idProducto' : ?1}")
+    Flux<AccountMovementDto> consultClientMovement(String idClient, String idProducto);
 
 }

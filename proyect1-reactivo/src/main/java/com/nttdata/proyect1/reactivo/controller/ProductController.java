@@ -19,12 +19,15 @@ public class ProductController {
 
     @PostMapping(value = "/saveProduct")
     public Single<Product> saveProduct(@RequestBody Product product){
+
         return productService.save(product);
     }
+
     @PutMapping(value = "/updateProduct")
     public Single<Product> updateProduct(@RequestBody Product product){
         return productService.update(product);
     }
+
     @GetMapping(value = "/getProducts" , produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Observable<Product> getProducts(){
         return productService.findAll();

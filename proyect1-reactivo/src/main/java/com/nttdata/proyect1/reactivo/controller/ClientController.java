@@ -39,17 +39,4 @@ public class ClientController {
         return clienteService.findById(id).flatMap(e -> Single.just(e));
     }
 
-    /*
-   @GetMapping(path = "/{id}" , produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Single<Client> getClientById(@PathVariable("id") String id){
-        return clienteService.findById(id);
-    }
-*/
-/*
-    @GetMapping(path = "/{name}" , produces = MediaType.APPLICATION_JSON_VALUE)
-    public Single<Client> getClientByName(@PathVariable("name") String name){
-        return clienteService.findClientByName(name);
-    }
-*/
-
 }

@@ -37,8 +37,4 @@ public class ClienteServiceImpl implements IClienteService{
         return Single.fromPublisher(clientRepository.findById(id));
     }
 
-    @Override
-    public Single<Client> findClientByName(String name) {
-        return  Single.fromPublisher(clientRepository.findClientByName(name));
-    }
 }

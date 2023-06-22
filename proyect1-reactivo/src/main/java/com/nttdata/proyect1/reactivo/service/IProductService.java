@@ -15,10 +15,8 @@ public interface IProductService {
 
     Single<Product> findById(String id);
 
-
     Single<ProductType> saveProductType(ProductType productType);
 
     Observable<ProductType> findAllProductType();
-    Single<ProductType> findProductTypeByIdProduct(String idProductType);
 
 }

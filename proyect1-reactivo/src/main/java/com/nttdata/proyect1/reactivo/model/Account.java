@@ -30,14 +30,17 @@ public class Account {
     @Field
     private Double amountUpdated;
 
-   // @Field
-    //private Client client;
+    @Field
+    private Double commission;
 
     @Field(name = "idClient")
     private String idClient;
 
     @Field(name = "idProduct")
     private String idProduct;
+
+    @Field
+    private String productType;
 
     @Field
     private List<AccountDetail> movements;

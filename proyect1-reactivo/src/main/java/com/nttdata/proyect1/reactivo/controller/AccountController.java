@@ -1,8 +1,10 @@
 package com.nttdata.proyect1.reactivo.controller;
 
 
+import com.nttdata.proyect1.reactivo.dto.AccountDto;
+import com.nttdata.proyect1.reactivo.dto.AccountMovementDto;
 import com.nttdata.proyect1.reactivo.model.Account;
-import com.nttdata.proyect1.reactivo.model.Client;
+import com.nttdata.proyect1.reactivo.response.ApiResponse;
 import com.nttdata.proyect1.reactivo.service.IAccountService;
 /*
 import io.reactivex.rxjava3.core.Observable;
@@ -23,16 +25,17 @@ public class AccountController {
     IAccountService accountService;
 
     @PostMapping
-    public Single<Account> saveClient(@RequestBody Account account){
-        return accountService.save(account);
+    public Single<ApiResponse> saveAccount(@RequestBody Account account){
+        return accountService.saveAccount(account);
     }
 
     @PutMapping
-    public Single<Account> updateClient(@RequestBody Account account){
+    public Single<Account> saveAccountMovements(@RequestBody Account account){
         return accountService.update(account);
     }
+
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Observable<Account> getClients(){
+    public Observable<Account> getAccounts(){
         return accountService.findAll();
     }
 
@@ -40,4 +43,17 @@ public class AccountController {
     public Single<Account> getClientById(@PathVariable("id") String id){
         return accountService.findById(id);
     }
+
+    @GetMapping(value = "/getAvailableBalances/{idClient}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Observable<AccountDto> getAvailableBalances(@PathVariable("idClient") String idClient){
+        return accountService.consultAvailableBalances(idClient);
+    }
+
+    @GetMapping(value = "/getAvailableBalances/{idClient}/{idProdcut}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Observable<AccountMovementDto> getAvailableBalances(
+                                                    @PathVariable("idClient") String idClient,
+                                                    @PathVariable("idProdcut") String idProdcut){
+        return accountService.consultClientMovement(idClient, idProdcut);
+    }
+
 }
