@@ -8,7 +8,7 @@ public interface ClientService {
 
     Mono<Client> saveClient(Mono<Client> client);
 
-    Mono<Client> updateClient(Mono<Client> client);
+    Mono<Client> updateClient(String id, Mono<Client> client);
 
     Flux<Client> findAll();
 

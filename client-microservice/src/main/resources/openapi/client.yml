@@ -30,11 +30,20 @@ paths:
                 $ref: '#/components/schemas/Response'
         "405":
           description: Invalid input
-  /manage/clientUpdate:
+  /manage/clientUpdate/{id}:
     put:
-      summary: Update Client
+      summary: Update an existing client
+      description: Update an existing client by Id
       operationId: updateClient
+      parameters:
+          - name: id
+            in: path
+            description: ID of client to update
+            required: true
+            schema:
+              type: string
       requestBody:
+        description: Update an existent client in the database
         content:
           application/json:
             schema:
@@ -56,11 +65,12 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Unique Id of an Client
+          description:  Id of an Client to return
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
-            format: uuid
       responses:
         200:
           description: OK

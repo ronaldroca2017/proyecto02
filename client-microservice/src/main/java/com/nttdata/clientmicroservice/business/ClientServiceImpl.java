@@ -20,8 +20,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Mono<Client> updateClient(Mono<Client> client) {
-        return client.flatMap(clientRepository::save);
+    public Mono<Client> updateClient(String id, Mono<Client> client) {
+        return clientRepository.findById(id)
+                .flatMap(c -> client)
+                .doOnNext(e -> e.setIdClient(id))
+                .flatMap(clientRepository::save);
     }
 
     @Override
