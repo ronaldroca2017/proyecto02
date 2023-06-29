@@ -11,7 +11,7 @@ servers:
 
 paths:
 
-  /manager/client:
+  /manage/client:
     post:
       summary: Save Client
       operationId: saveClient
@@ -20,14 +20,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ClientDTO'
+
       responses:
-        200:
-          description: OK
+        "200":
+          description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClientDTO'
-  /manager/clientUpdate:
+                $ref: '#/components/schemas/Response'
+        "405":
+          description: Invalid input
+  /manage/clientUpdate:
     put:
       summary: Update Client
       operationId: updateClient
@@ -37,14 +40,16 @@ paths:
             schema:
               $ref: '#/components/schemas/ClientDTO'
       responses:
-        200:
-          description: OK
+        "200":
+          description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClientDTO'
+                $ref: '#/components/schemas/Response'
+        "405":
+          description: Invalid input
 
-  /manager/client/{id}:
+  /manage/client/{id}:
     get:
       summary: Get Client By Id
       operationId: getClientById
@@ -63,7 +68,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientDTO'
-  /manager/clientAll:
+  /manage/clientAll:
     get:
       summary: Get Clients
       operationId: getClients
@@ -79,6 +84,10 @@ paths:
 
 components:
   schemas:
+    Response:
+      type: object
+      additionalProperties:
+        type: object
     ClientDTO:
       type: object
       description: Data element for User

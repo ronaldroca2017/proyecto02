@@ -1,12 +1,13 @@
 package com.nttdata.clientmicroservice.repository;
 
-
-import com.openapi.gen.springboot.dto.ClientDTO;
+import com.nttdata.clientmicroservice.entity.Client;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface IClientRepository extends ReactiveMongoRepository<ClientDTO, String> {
+public interface ClientRepository extends ReactiveMongoRepository<Client, String> {
+
 
 
 }
