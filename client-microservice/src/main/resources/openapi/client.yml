@@ -1,0 +1,104 @@
+openapi: "3.0.1"
+
+info:
+  title: "Client"
+  version: "1"
+  description: Client API
+
+servers:
+  - url: http://localhost:8080/api
+    description: Local server
+
+paths:
+
+  /manager/client:
+    post:
+      summary: Save Client
+      operationId: saveClient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientDTO'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDTO'
+  /manager/clientUpdate:
+    put:
+      summary: Update Client
+      operationId: updateClient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientDTO'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDTO'
+
+  /manager/client/{id}:
+    get:
+      summary: Get Client By Id
+      operationId: getClientById
+      parameters:
+        - name: id
+          in: path
+          description: Unique Id of an Client
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDTO'
+  /manager/clientAll:
+    get:
+      summary: Get Clients
+      operationId: getClients
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientDTO'
+
+components:
+  schemas:
+    ClientDTO:
+      type: object
+      description: Data element for User
+      properties:
+        idClient:
+          type: string
+        name:
+          type: string
+        surnames:
+          type: string
+        dni:
+          type: string
+        clientType:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
